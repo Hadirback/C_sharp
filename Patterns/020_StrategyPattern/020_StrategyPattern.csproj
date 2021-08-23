@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C5D6E34-5CCA-40C8-BCBE-AEDA4108B7BE}</ProjectGuid>
+    <ProjectGuid>{DB5689FC-439E-4CA3-A0A2-1396CB9E04CE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_017_MementoPattern</RootNamespace>
-    <AssemblyName>017_MementoPattern</AssemblyName>
+    <RootNamespace>_020_StrategyPattern</RootNamespace>
+    <AssemblyName>020_StrategyPattern</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,10 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caretaker.cs" />
-    <Compile Include="ConcreteMemento.cs" />
-    <Compile Include="IMemento.cs" />
-    <Compile Include="Originator.cs" />
+    <Compile Include="ConcreteStrategy.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="IStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

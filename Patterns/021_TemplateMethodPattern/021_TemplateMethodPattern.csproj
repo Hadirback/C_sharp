@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C5D6E34-5CCA-40C8-BCBE-AEDA4108B7BE}</ProjectGuid>
+    <ProjectGuid>{AD9A22E0-8366-4F89-BAFF-1915E85698B1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_017_MementoPattern</RootNamespace>
-    <AssemblyName>017_MementoPattern</AssemblyName>
+    <RootNamespace>_021_TemplateMethodPattern</RootNamespace>
+    <AssemblyName>021_TemplateMethodPattern</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,10 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caretaker.cs" />
-    <Compile Include="ConcreteMemento.cs" />
-    <Compile Include="IMemento.cs" />
-    <Compile Include="Originator.cs" />
+    <Compile Include="AbstractClass.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="ConcreteClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

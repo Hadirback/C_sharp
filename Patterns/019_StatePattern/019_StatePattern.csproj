@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C5D6E34-5CCA-40C8-BCBE-AEDA4108B7BE}</ProjectGuid>
+    <ProjectGuid>{F602C306-63C4-43F9-908B-6ADE900B68DC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_017_MementoPattern</RootNamespace>
-    <AssemblyName>017_MementoPattern</AssemblyName>
+    <RootNamespace>_019_StatePattern</RootNamespace>
+    <AssemblyName>019_StatePattern</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,12 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caretaker.cs" />
-    <Compile Include="ConcreteMemento.cs" />
-    <Compile Include="IMemento.cs" />
-    <Compile Include="Originator.cs" />
+    <Compile Include="ConcreteState.cs" />
+    <Compile Include="Context.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="State.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
