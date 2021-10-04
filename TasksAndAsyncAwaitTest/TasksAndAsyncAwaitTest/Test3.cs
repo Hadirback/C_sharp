@@ -8,7 +8,7 @@ namespace TasksAndAsyncAwaitTest
 {
     class Test3
     {
-        static async Task MainTest3Meth()
+        public async Task MainTest3Meth()
         {
             Coffee cup = PourCoffee();
             Console.WriteLine("Кофе готово");
