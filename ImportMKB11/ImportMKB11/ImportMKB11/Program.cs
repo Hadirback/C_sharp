@@ -116,6 +116,11 @@ namespace ImportMKB11
                         Stopwatch.Stop();
                         Console.WriteLine($"Время получения данных ExecuteBulkCopyIntoDiseases11 {Stopwatch.ElapsedMilliseconds / 1000} c");
 
+                        Stopwatch.Restart();
+                        ExecuteBulkCopyIntoDocGroup(sqlBulkCopy, connection, transaction);
+                        Stopwatch.Stop();
+                        Console.WriteLine($"Время получения данных ExecuteBulkCopyIntoPubDocSet {Stopwatch.ElapsedMilliseconds / 1000} c");
+
                         transaction.Commit();
                         Console.WriteLine("Данные добавлены в базу данных");
                     }
@@ -183,10 +188,10 @@ namespace ImportMKB11
                 sqlBulkCopy.DestinationTableName = DataService.ArtDocKSSName; 
 
                 sqlBulkCopy.ColumnMappings.Add("Id", "ID");
-                sqlBulkCopy.ColumnMappings.Add("ModuleId", "ModuleId");
+                sqlBulkCopy.ColumnMappings.Add("ModuleId", "ModuleID");
                 sqlBulkCopy.ColumnMappings.Add("GroupId", "GroupID");
                 sqlBulkCopy.ColumnMappings.Add("ParentId", "ParentID");
-                sqlBulkCopy.ColumnMappings.Add("ParentModuleId", "ParentModuleId");
+                sqlBulkCopy.ColumnMappings.Add("ParentModuleId", "ParentModuleID");
                 sqlBulkCopy.ColumnMappings.Add("BegDate", "BegDate");
                 sqlBulkCopy.ColumnMappings.Add("DocName", "DocName");
                 sqlBulkCopy.ColumnMappings.Add("ShortName", "ShortName");
@@ -194,6 +199,7 @@ namespace ImportMKB11
                 sqlBulkCopy.ColumnMappings.Add("SortNum", "SortNum");
                 sqlBulkCopy.ColumnMappings.Add("XmlContent", "XMLContent");
                 sqlBulkCopy.ColumnMappings.Add("OperInfo", "OperInfo");
+                sqlBulkCopy.ColumnMappings.Add("StateId", "StateID");
 
                 sqlBulkCopy.WriteToServer(set.Tables[0]);
             }
@@ -218,15 +224,32 @@ namespace ImportMKB11
             }
         }
 
-        private static void ExecuteBulkCopyIntoDiseases11(SqlBulkCopy sqlBulkCopy, SqlConnection connection, SqlTransaction transaction)
+        private static void ExecuteBulkCopyIntoDocGroup(SqlBulkCopy sqlBulkCopy, SqlConnection connection, SqlTransaction transaction)
         {
 
+            string json = JsonConvert.SerializeObject(new { Table = ArtDocKssData.Select(s => new DocGroupRow() { GroupId = s.GroupId }).ToList() });
+            DataSet set = JsonConvert.DeserializeObject<DataSet>(json);
+
+            using (sqlBulkCopy = new SqlBulkCopy(connection, SqlBulkCopyOptions.Default, transaction))
+            {
+                sqlBulkCopy.DestinationTableName = DataService.DocGroupName;
+
+                sqlBulkCopy.ColumnMappings.Add("GroupId", "GroupID");
+                sqlBulkCopy.ColumnMappings.Add("GroupName", "GroupName");
+                sqlBulkCopy.ColumnMappings.Add("Upd", "Upd");
+
+                sqlBulkCopy.WriteToServer(set.Tables[0]);
+            }
+        }
+
+        private static void ExecuteBulkCopyIntoDiseases11(SqlBulkCopy sqlBulkCopy, SqlConnection connection, SqlTransaction transaction)
+        {
             string json = JsonConvert.SerializeObject(new { Table = ArtDocIds });
             DataSet set = JsonConvert.DeserializeObject<DataSet>(json);
 
             using (sqlBulkCopy = new SqlBulkCopy(connection, SqlBulkCopyOptions.Default, transaction))
             {
-                sqlBulkCopy.DestinationTableName = "dbo.Diseases11";
+                sqlBulkCopy.DestinationTableName = DataService.Diseases11Name;
 
                 sqlBulkCopy.ColumnMappings.Add("Id", "Id");
 

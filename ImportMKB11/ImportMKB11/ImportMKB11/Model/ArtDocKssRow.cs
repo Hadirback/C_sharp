@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImportMKB11.Model
 {
@@ -39,5 +35,6 @@ namespace ImportMKB11.Model
         public int SortNum { get; set; }
         public string XmlContent { get; set; }
         public string OperInfo { get; set; }
+        public byte StateId { get { return 1; } }
     }
 }

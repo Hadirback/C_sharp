@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -16,6 +15,8 @@ namespace ImportMKB11
 
         public const string PubDocSetName = "dbo.TestPubDocSet";
         public const string ArtDocKSSName = "dbo.TestArtDocKSS";
+        public const string DocGroupName = "dbo.TestDocGroup";
+        public const string Diseases11Name = "dbo.TestDiseases11";
 
         private static readonly Regex rgx = new Regex(@"BlockL[\d]+[-]{1}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
